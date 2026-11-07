@@ -211,6 +211,62 @@ header.nav.scrolled{box-shadow:0 1px 0 var(--line),0 8px 24px -16px rgba(17,18,2
 .g .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;font:600 15px/1.35 var(--head)}
 .g .cap i{font-style:normal;color:var(--muted);transition:translate .25s,color .25s}
 .g:hover .cap i{translate:3px -3px;color:var(--ink)}
+
+/* case study viewer */
+html.cv-open{overflow:hidden}
+.cv{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:clamp(0px,2.2vw,32px);background:color-mix(in srgb,var(--ink) 45%,transparent);backdrop-filter:blur(6px);opacity:0;transition:opacity .25s}
+.cv[hidden]{display:none!important}
+.cv.show{opacity:1}
+.cv-panel{display:flex;flex-direction:column;width:min(1320px,100%);height:100%;max-height:100%;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);overflow:hidden;transform:translateY(18px) scale(.985);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cv.show .cv-panel{transform:none}
+@media (max-width:640px){.cv{padding:0}.cv-panel{border-radius:0;border:0}}
+.cv-head{display:flex;align-items:center;gap:16px;padding:14px clamp(16px,2vw,24px);border-bottom:1px solid var(--line);background:var(--card)}
+.cv-head .t{min-width:0;flex:1}
+.cv-head h2{font:700 clamp(17px,1.6vw,21px)/1.2 var(--head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv-head .tg{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.cv-head .acts{display:flex;gap:8px;flex:none}
+.cv-close{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--body);padding:8px 14px;border-radius:8px;border:1px solid var(--btn);background:var(--btn);color:var(--btn-ink);cursor:pointer}
+.cv-close svg{width:14px;height:14px}
+.cv-ext{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--body);padding:8px 14px;border-radius:8px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:transparent}
+.cv-ext:hover{border-color:var(--ink)}
+@media (max-width:560px){.cv-ext span{display:none}}
+.cv-main{flex:1;min-height:0;display:grid;grid-template-columns:260px minmax(0,1fr)}
+.cv-nav{border-right:1px solid var(--line);padding:20px 14px;overflow:auto;background:var(--band)}
+.cv-nav .lbl{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 10px 10px}
+.cv-nav ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.cv-nav button{width:100%;display:flex;gap:12px;align-items:baseline;text-align:left;padding:9px 10px;border-radius:8px;border:1px solid transparent;background:none;color:var(--muted);font:500 14px/1.35 var(--body);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.cv-nav button b{font:700 13px var(--head);color:inherit;font-variant-numeric:tabular-nums;min-width:20px}
+.cv-nav button:hover{color:var(--ink);background:var(--chip)}
+.cv-nav button[aria-current="true"]{color:var(--ink);background:var(--card);border-color:var(--ink);box-shadow:var(--shadow)}
+.cv-nav .note{margin:16px 10px 0;font-size:13px;color:var(--muted)}
+.cv-body{position:relative;overflow:auto;overscroll-behavior:contain;scroll-behavior:smooth;padding:clamp(12px,2vw,28px);background:var(--card)}
+@media (prefers-reduced-motion:reduce){.cv-body{scroll-behavior:auto}}
+.cv-img{position:relative;max-width:1000px;margin:0 auto;border-radius:12px;overflow:hidden;background:var(--band);box-shadow:var(--shadow)}
+.cv-img img{display:block;width:100%;height:100%}
+.cv-img .anchor{position:absolute;left:0;width:1px;height:1px}
+.cv-img.loading::after{content:"Loading case study…";position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:14px;color:var(--muted)}
+.cv-frame{width:100%;height:100%;min-height:520px;border:0;border-radius:12px;background:var(--band)}
+.cv-body.is-frame{padding:clamp(8px,1.4vw,18px);display:flex}
+.cv-foot{max-width:1000px;margin:28px auto 8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:14px}
+.cv-foot a{color:var(--ink);font-weight:600}
+@media (max-width:860px){
+  .cv-main{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .cv-nav{border-right:0;border-bottom:1px solid var(--line);padding:10px 12px;overflow-x:auto;overflow-y:hidden}
+  .cv-nav .lbl,.cv-nav .note{display:none}
+  .cv-nav ol{display:flex;gap:6px;width:max-content}
+  .cv-nav button{white-space:nowrap;padding:7px 12px;border-radius:999px;border-color:var(--line);background:var(--card)}
+}
+.cv-head [hidden]{display:none!important}
+.cv-toggle{cursor:pointer;font:600 14px var(--body)}
+.cv-toggle svg{width:15px;height:15px}
+.cv-fs{cursor:pointer;font:600 14px var(--body)}
+.cv-fs svg{width:15px;height:15px}
+.cv-frame:fullscreen{border-radius:0;background:#1e1e1e}
+.cv-head .tg{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:700px){.cv-head{flex-wrap:wrap;row-gap:10px}.cv-head .t{flex:1 1 100%}.cv-head .acts{width:100%;justify-content:flex-end;gap:6px}.cv-fs span,.cv-fig span{display:none}.cv-ext{padding:8px 10px}}
+.cv-proto{flex:1;display:flex;min-height:0;min-width:0}
+.cv-proto[hidden]{display:none}
+.proj[data-case]{cursor:pointer}
 </style>
 <script>
 try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-on');
@@ -338,37 +394,40 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 
   <section class="sec alt" id="projects">
     <div class="wrap">
-      <div class="proj-head"><h2>Projects</h2><p>Selected product work across enterprise, AI and edtech. Case studies coming soon.</p></div>
+      <div class="proj-head"><h2>Projects</h2><p>Selected product work across enterprise, AI and edtech. Open a project to see the full case study on Behance.</p></div>
       <div class="projects">
         <article class="proj">
-          <a class="shot has-img" href="https://www.behance.net/gallery/243253797/Audit-Management-Dashboard" target="_blank" rel="noopener" aria-label="Audit Management Dashboard on Behance"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/a07c6a243253797.Y3JvcCwyMTI3LDE2NjQsNDI2LDA.png" alt="Audit Management Dashboard cover" loading="lazy" width="808" height="632"><span class="soon">View on Behance ↗</span></a>
+          <a class="shot has-img" href="https://www.behance.net/gallery/243253797/Audit-Management-Dashboard" target="_blank" rel="noopener" aria-label="Open Audit Management Dashboard case study"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/1d84de243253797.Y3JvcCwxMTkzLDkzMywxMDAsMA.jpg" alt="Audit Management Dashboard cover" loading="lazy" width="808" height="632"><span class="soon">View case study</span></a>
           <div class="body"><span class="tag">BFSI · Enterprise · MUI</span><h3>Enterprise Audit Platform</h3><p>Turned a manual, paper-heavy audit process into one digital end-to-end workflow, designed on Material UI.</p><div class="result"><b>2 → 6</b><span>files processed per day</span></div></div>
         </article>
         <article class="proj">
-          <div class="shot" aria-hidden="true"><span class="soon">Screens soon</span><div class="mock"><div class="dots"><i></i><i></i><i></i></div><div class="lines"><span style="width:35%;background:var(--c2)"></span><span></span><span style="width:70%"></span><span style="width:85%"></span><span style="width:55%"></span></div></div></div>
-          <div class="body"><span class="tag">Salesforce · SLDS · Components</span><h3>Sales Cloud Product UX</h3><p>Reading List Viewer, Dynamic Forms, Page Guide, Author Acknowledgement and multi-app help content, built from reusable SLDS components.</p><div class="result"><b>5</b><span>components shipped with developers</span></div></div>
+          <a class="shot has-img" href="https://www.behance.net/gallery/258164639/Saleforce-Improved-Guide" target="_blank" rel="noopener" aria-label="Open Salesforce Improved Help case study"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/e8cc2d258164639.Y3JvcCwxMzA2LDEwMjEsMTAzLDA.jpg" alt="Salesforce Improved Help cover" loading="lazy" width="808" height="632"><span class="soon">View case study</span></a>
+          <div class="body"><span class="tag">Salesforce · SLDS · Components</span><h3>Salesforce Improved Help</h3><p>Enhancements to Improved Help, the in-app help platform for Salesforce: a richer Reading List Viewer, field-level help in Dynamic Forms, a modern Page Guide, author acknowledgement and multi-app help, designed as SLDS components.</p><div class="result"><b>5</b><span>components shipped with developers</span></div></div>
         </article>
         <article class="proj">
           <div class="shot" aria-hidden="true"><span class="soon">Screens soon</span><div class="mock phone"><div class="dots"><i></i></div><div class="lines"><span style="width:60%;background:var(--c4)"></span><span style="height:34px;border-radius:8px"></span><span></span><span style="height:24px;border-radius:8px"></span></div></div></div>
           <div class="body"><span class="tag">AI · Voice · Capstone</span><h3>Voice Matters</h3><p>A Hindi-first voice AI assistant that helps people find verified government welfare schemes, taken from research to a working MVP.</p><div class="result"><b>0 → MVP</b><span>discovery, roadmap and AI workflow</span></div></div>
         </article>
         <article class="proj">
-          <div class="shot" aria-hidden="true"><span class="soon">Screens soon</span><div class="mock"><div class="dots"><i></i><i></i><i></i></div><div class="lines"><span style="width:40%;background:var(--c1)"></span><span></span><span style="width:75%"></span><span style="width:60%"></span><span style="width:85%"></span></div></div></div>
-          <div class="body"><span class="tag">EdTech · Research</span><h3>School Platform Redesign</h3><p>User research and usability evaluations across school, teacher, parent and student workflows, followed by an end-to-end redesign.</p><div class="result"><b>4</b><span>user groups researched and redesigned</span></div></div>
+          <a class="shot has-img" href="https://www.behance.net/gallery/258149967/Parent-Engagement-Platform-Jijau" target="_blank" rel="noopener" aria-label="Open Jijau Parent Engagement Platform case study"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/825a3b258149967.Y3JvcCwzMTk5LDI1MDIsMjQ1LDA.jpg" alt="Jijau Parent Engagement Platform cover" loading="lazy" width="808" height="632"><span class="soon">View case study</span></a>
+          <div class="body"><span class="tag">EdTech · Mobile app · Research</span><h3>Jijau: Parent Engagement Platform</h3><p>A mobile platform that connects schools, teachers, parents and students. I ran user research and usability evaluations across all four workflows, then redesigned the app end to end.</p><div class="result"><b>4</b><span>user groups researched and redesigned</span></div></div>
         </article>
       </div>
 
       <div class="more-head">
-        <div><h3>More work on Behance</h3><p>Web, mobile and product design explorations.</p></div>
+        <div><h3>More work on Behance</h3><p>Web, mobile and product design work: apps, websites and redesigns.</p></div>
         <a class="btn ghost sm" href="https://www.behance.net/bhaveshudhani" target="_blank" rel="noopener">See full profile ↗</a>
       </div>
       <div class="gallery">
-        <a class="g" href="https://www.behance.net/gallery/242981817/AI-for-organization-Website" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/cd14e4242981817.Y3JvcCwxNjMxLDEyNzYsMTc3LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>AI for Organization Website</span><i>↗</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/204573451/Parcel-Pilot-Parcel-tracking-application" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/934616204573451.Y3JvcCwxMjQ3LDk3Niw4OSww.jpg" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Parcel Pilot: Parcel Tracking App</span><i>↗</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/203491121/Visitify-Visitor-Management-Application" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/07f544203491121.Y3JvcCwxMTkzLDkzMywxMDYsMA.jpg" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Visitify: Visitor Management App</span><i>↗</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/202352673/DAMAC-Website-Redesign" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/9e4bf6202352673.Y3JvcCwxMjIwLDk1NCwxMDgsMA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>DAMAC Website Redesign</span><i>↗</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/197606919/Mallify-One-stop-destination-to-explore-malls" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/204b6a197606919.Y3JvcCwyNzIwLDIxMjcsMTgxLDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Mallify: Explore Malls</span><i>↗</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/249200645/Car-Product-Design-Portfolio" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/218864249200645.Y3JvcCwyMjAxLDE3MjIsMTE5LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Car &amp; Product Design</span><i>↗</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/242981817/AI-for-organization-Website" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/cd14e4242981817.Y3JvcCwxNjMxLDEyNzYsMTc3LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>AI for Organization Website</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/204573451/Parcel-Pilot-Parcel-tracking-application" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/934616204573451.Y3JvcCwxMjQ3LDk3Niw4OSww.jpg" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Parcel Pilot: Parcel Tracking App</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/203491121/Visitify-Visitor-Management-Application" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/07f544203491121.Y3JvcCwxMTkzLDkzMywxMDYsMA.jpg" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Visitify: Visitor Management App</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/202352673/DAMAC-Website-Redesign" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/9e4bf6202352673.Y3JvcCwxMjIwLDk1NCwxMDgsMA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>DAMAC Website Redesign</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/199215973/Ease-My-Trip-Onboarding-design" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/2428fa199215973.Y3JvcCwxMjIwLDk1NCwxMTEsMA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>EaseMyTrip Onboarding</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/197677493/Payment-application-UI-design" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/caa0b8197677493.Y3JvcCwzOTM4LDMwODAsMTg1LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Payment App UI</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/197610427/Whatsapp-redesign-project" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/a881d9197610427.Y3JvcCwzOTM4LDMwODAsMjA0LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>WhatsApp Redesign</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/203793343/Recipe-sharing-landing-page-PARALLAX-EFFECT" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/2c0dd4203793343.Y3JvcCwxNDI4LDExMTcsMTgzLDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Recipe Sharing Landing Page</span><i>→</i></span></a>
+        <a class="g" href="https://www.behance.net/gallery/249200645/Car-Product-Design-Portfolio" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/218864249200645.Y3JvcCwyMjAxLDE3MjIsMTE5LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Car &amp; Product Design</span><i>→</i></span></a>
       </div>
     </div>
   </section>
@@ -385,6 +444,25 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
     </div>
   </section>
 </main>
+
+<div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-labelledby="cv-title">
+  <div class="cv-panel">
+    <div class="cv-head">
+      <div class="t"><h2 id="cv-title">Case study</h2><div class="tg" id="cv-tag"></div></div>
+      <div class="acts">
+        <button class="cv-ext cv-fs" type="button" id="cv-fs" hidden title="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg><span>Full screen</span></button>
+        <a class="cv-ext cv-fig" id="cv-fig" href="#" target="_blank" rel="noopener" hidden title="Open in Figma"><span>Open in Figma</span> ↗</a>
+        <button class="cv-ext cv-toggle" type="button" id="cv-toggle" hidden>View prototype</button>
+        <a class="cv-ext" id="cv-ext" href="#" target="_blank" rel="noopener"><span>View on Behance</span> ↗</a>
+        <button class="cv-close" type="button" id="cv-close" aria-label="Close case study"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Close</button>
+      </div>
+    </div>
+    <div class="cv-main">
+      <nav class="cv-nav" aria-label="Case study sections"><div class="lbl">Index</div><ol id="cv-index"></ol><p class="note" id="cv-note"></p></nav>
+      <div class="cv-body" id="cv-body" tabindex="-1"></div>
+    </div>
+  </div>
+</div>
 
 <footer><div class="wrap"><span>© 2026 Bhavesh Udhani</span><span>Product Designer · Jaipur, India</span></div></footer>
 
@@ -424,6 +502,136 @@ document.querySelectorAll('.copy').forEach(function(b){
     setTimeout(function(){b.textContent='Copy';},1800);
   });
 });
+</script>
+<script>
+/* Case study viewer: opens a project's full Behance case study with a section index */
+(function(){
+  var IMG='https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/';
+  var CASES={
+    '243253797':{t:'Enterprise Audit Platform',tag:'BFSI · Enterprise · MUI',img:'d40f3d243253797.6aeb8686da0f7.jpg',h:11503,s:[['Project Overview',1035],['Problem Statement',1605],['Users & Roles',2121],['Information Architecture',3132],['Style Guide',4432],['Layout',7498],['Visual Design',8395],['Thank You',10879]],p:['https://embed.figma.com/proto/oDebLKWlnpcyu9rz8H9Add/Audit-Management?page-id=&node-id=5182-28717&viewport=2152%2C-5786%2C0.44&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=4035%3A17960&show-proto-sidebar=1&embed-host=share']},
+    '258164639':{t:'Salesforce Improved Help',tag:'Salesforce · SLDS · Components',img:'9672e0258164639.6aeed5242a0c2.jpg',h:10836,s:[['Project Overview',975],['Client Brief',1536],['Problem Statement',2396],['Enhancements',2858],['Style Guide',4260],['UI Elements',5710],['Visual Design',7480],['Thank You',10212]]},
+    '258149967':{t:'Jijau: Parent Engagement Platform',tag:'EdTech · Mobile app · Research',img:'618412258149967.6aee28c684411.jpg',h:12312,s:[['Project Overview',944],['Problem Statement',1568],['Listening to Schools',2055],['Who It Is For',2712],['What Schools Can Share',3220],['The App',4029],['School Profile',6006],['Design System',7004],['Components',9611],['Thank You',11960]],pl:['Prototype 1','Prototype 2'],p:['https://embed.figma.com/proto/GN5tbUQHDhT557dwy838Fc/openlinks-foundation_nov?page-id=602%3A627&node-id=602-1712&m=draw&scaling=scale-down&content-scaling=fixed&starting-point-node-id=602%3A1712&embed-host=share','https://embed.figma.com/proto/GN5tbUQHDhT557dwy838Fc/openlinks-foundation_nov?page-id=686%3A12607&node-id=1076-8052&p=f&m=draw&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1076%3A8052&show-proto-sidebar=1&embed-host=share']},
+    '204573451':{t:'Parcel Pilot: Parcel Tracking App',tag:'Mobile app · Logistics',img:'2be383204573451.66ab3924acf8d.jpg',h:10452,s:[['Project Overview',982],['Problem Identification',1352],['Design Process',1981],['User Persona',2526],['Style Guide',3722],['Layout Grid',5756],['Low-Fidelity Design',6655],['Visual Design',8303],['Thank You',9949]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fh4ukaODj0XAXwhMPZWCtvE%2Fwhatsapp-app%3Fpage-id%3D397%253A5715%26node-id%3D979-1656%26viewport%3D310%252C-502%252C0.08%26t%3DVVt7cqv0XecwF4wC-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D979%253A1656%26show-proto-sidebar%3D1']},
+    '203491121':{t:'Visitify: Visitor Management App',tag:'Mobile app · Enterprise',img:'55f80e203491121.669807ebaa4f2.jpg',h:15242,s:[['Project Overview',985],['Problem Statement',1340],['Design Process',1916],['SWOT Analysis',2466],['User Persona',3987],['Information Architecture',5397],['Style Guide',6663],['Layout Grid',7926],['UI Elements',8748],['Visual Design',9726],['Admin Screens',11410],['Visitor Screens',13006],['Thank You',14819]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fh4ukaODj0XAXwhMPZWCtvE%2Fwhatsapp-app%3Fpage-id%3D566%253A785%26node-id%3D956-1439%26viewport%3D973%252C-1740%252C0.21%26t%3DGaaLOHyWUxTYYxQ4-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D957%253A1622%26show-proto-sidebar%3D1']},
+    '202352673':{t:'DAMAC Website Redesign',tag:'Website · Real estate',img:'953c3f202352673.66849e6398bbb.png',h:14055,s:[['Introduction',930],['Project Overview',2100],['Problem Statement',2680],['Landing Page',3858],['Design Process',4480],['User Persona',5650],['Style Guide',6515],['Layout Grid',7720],['Visual Design',8560],['Thank You',13480]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FC2vOYLr7XyXPw3GN0arapY%2Fdamac-scrollable%3Fpage-id%3D798%253A1344%26node-id%3D798-2155%26viewport%3D479%252C151%252C0.05%26t%3D8ofyOkumnNgqROPU-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D798%253A2155']},
+    '199215973':{t:'EaseMyTrip Onboarding',tag:'Mobile app · Travel',img:'f137c4199215973.664de7c0c7dbc.png',h:5517,s:[['Project Overview',976],['Why Redesign',1309],['Design Process',2090],['Style Guide',2645],['Visual Design',4091],['Thank You',4995]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FW3asFzWS2W1Wet6K8x4QRg%2FBUTTONS%3Fpage-id%3D292%253A957%26node-id%3D292-958%26viewport%3D337%252C292%252C0.19%26t%3DU0VzKOWFsEhu9Cr0-1%26scaling%3Dscale-down%26starting-point-node-id%3D292%253A1032']},
+    '197677493':{t:'Payment App UI',tag:'Mobile app · Fintech',img:'bbf218197677493.663445b82f125.png',h:7753,s:[['Project Overview',987],['Problem Statement',1488],['Style Guide',2002],['Iconography',3237],['Layout Grid',3903],['Visual Design',5136],['Thank You',7165]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FpyA8S92B5cLm9HKWWXfUrC%2Fgpay-final-with-presentation%3Fpage-id%3D4%253A1588%26type%3Ddesign%26node-id%3D4-1589%26viewport%3D337%252C292%252C0.28%26t%3D1IxqeX7DlKyxdK7o-1%26scaling%3Dscale-down%26mode%3Ddesign']},
+    '197610427':{t:'WhatsApp Redesign',tag:'Mobile app · Redesign',img:'762732197610427.663355537e201.png',h:8464,s:[['Project Overview',1052],['Problem Statement',1566],['Design Process',1958],['User Persona',2833],['Style Guide',3444],['Layout Grid',5033],['Visual Design',6115],['Thank You',7880]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbiLxiqXy9uPTtVxr84Edou%2FUntitled%3Fpage-id%3D118%253A41%26type%3Ddesign%26node-id%3D223-62%26viewport%3D306%252C135%252C0.1%26t%3DN8ZOQ0OTNSc5N9mm-1%26scaling%3Dscale-down%26starting-point-node-id%3D275%253A194%26mode%3Ddesign']},
+    '249200645':{t:'Car & Product Design',tag:'Automotive · Product design',img:'98ca9d249200645.6a02d1a038e71.png',h:987,s:[['Car & Product Design',0]]},
+    '242981817':{t:'AI for Organization Website',tag:'Website · Interactive prototype',frame:'https://embed.figma.com/proto/AoCqQUur3GOHNTljikPuJ4/ozoo-ai?page-id=0%3A1&node-id=746-8572&viewport=-22213%2C-2829%2C0.24&scaling=scale-down&content-scaling=fixed&starting-point-node-id=746%3A8572&embed-host=share'},
+    '203793343':{t:'Recipe Sharing Landing Page',tag:'Website · Parallax prototype',frame:'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbaaEMWD599JBVlfkZUc1Yp%2FUntitled%3Fpage-id%3D620%253A2179%26node-id%3D623-7209%26viewport%3D-655%252C405%252C0.11%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D623%253A7209'}
+  };
+  var cv=document.getElementById('cv'),body=document.getElementById('cv-body'),idx=document.getElementById('cv-index'),
+      title=document.getElementById('cv-title'),tag=document.getElementById('cv-tag'),ext=document.getElementById('cv-ext'),
+      toggle=document.getElementById('cv-toggle'),fsBtn=document.getElementById('cv-fs'),figLink=document.getElementById('cv-fig'),note=document.getElementById('cv-note'),closeBtn=document.getElementById('cv-close'),root=document.documentElement;
+  var cur=null,wrap=null,btns=[],lastFocus=null,ticking=false,mode='case',caseEl=null,protoEl=null,caseScroll=0;
+  function idOf(href){var m=/behance\.net\/gallery\/(\d+)/.exec(href||'');return m&&CASES[m[1]]?m[1]:null;}
+  function pad(n){return (n<10?'0':'')+n;}
+  function setScroll(v){body.style.scrollBehavior='auto';body.scrollTop=v;body.style.scrollBehavior='';}
+  function item(n,label,fn){var b=document.createElement('button');b.type='button';b.innerHTML='<b>'+pad(n)+'</b><span></span>';b.lastChild.textContent=label;if(fn)b.addEventListener('click',fn);var li=document.createElement('li');li.appendChild(b);idx.appendChild(li);return b;}
+  /* Figma links: an embed that keeps Figma's own toolbar, and the full prototype for "Open in Figma" */
+  function fig(u){var proto=u,m=/figma\.com\/embed\?.*?[?&]url=([^&]+)/.exec(u);if(m)proto=decodeURIComponent(m[1]);
+    try{var x=new URL(proto);x.hostname='www.figma.com';x.searchParams.delete('embed-host');x.searchParams.delete('embed_host');
+      var open=x.toString(),e=new URL(open);e.hostname='embed.figma.com';e.searchParams.set('embed-host','share');e.searchParams.set('footer','true');e.searchParams.set('viewport-controls','true');
+      return {embed:e.toString(),open:open};}catch(err){return {embed:u,open:u};}}
+  function protoControls(on,u){fsBtn.hidden=!on;figLink.hidden=!on;if(on)figLink.href=fig(u).open;}
+  function visibleFrame(){var f=body.querySelectorAll('iframe');for(var i=0;i<f.length;i++)if(!f[i].hidden&&f[i].offsetParent)return f[i];return null;}
+  fsBtn.addEventListener('click',function(){var f=visibleFrame();if(!f)return;var r=f.requestFullscreen||f.webkitRequestFullscreen;if(r){try{var p=r.call(f);if(p&&p.catch)p.catch(function(){window.open(figLink.href,'_blank','noopener');});}catch(e){window.open(figLink.href,'_blank','noopener');}}else window.open(figLink.href,'_blank','noopener');});
+  function frame(src,t){var f=document.createElement('iframe');f.className='cv-frame';f.src=fig(src).embed;f.title=t;f.allowFullscreen=true;f.setAttribute('allow','fullscreen; clipboard-write');return f;}
+
+  function caseIndex(){
+    idx.innerHTML='';btns=[];note.textContent=cur.s.length>1?'Jump to any part of the case study.':'';
+    cur.s.forEach(function(s,i){btns.push(item(i+1,s[0],function(){jump(i);}));});
+  }
+  function protoIndex(){
+    idx.innerHTML='';btns=[];note.textContent='Interactive Figma prototype. Click inside it to explore.';
+    var frames=protoEl.querySelectorAll('iframe');
+    cur.p.forEach(function(u,i){var b=item(i+1,(cur.pl&&cur.pl[i])||'Interactive Prototype',function(){
+      frames.forEach(function(f,k){f.hidden=k!==i;});protoControls(true,cur.p[i]);btns.forEach(function(x,k){x.setAttribute('aria-current',k===i?'true':'false');});});
+      b.setAttribute('aria-current',i===0?'true':'false');btns.push(b);});
+  }
+  function setMode(m){
+    if(!cur||!cur.p||m===mode)return;
+    if(m==='proto'){
+      caseScroll=body.scrollTop;
+      if(!protoEl){protoEl=document.createElement('div');protoEl.className='cv-proto';
+        cur.p.forEach(function(u,i){var f=frame(u,cur.t+' prototype');f.hidden=i>0;protoEl.appendChild(f);});body.appendChild(protoEl);}
+      caseEl.hidden=true;protoEl.hidden=false;body.classList.add('is-frame');setScroll(0);
+      toggle.innerHTML='View case study';toggle.setAttribute('aria-pressed','true');protoIndex();protoControls(true,cur.p[0]);[].forEach.call(protoEl.querySelectorAll('iframe'),function(f,k){f.hidden=k>0;});
+    }else{
+      protoEl.hidden=true;caseEl.hidden=false;body.classList.remove('is-frame');
+      toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');caseIndex();protoControls(false);
+      setScroll(caseScroll);spy();
+    }
+    mode=m;
+  }
+  toggle.addEventListener('click',function(){setMode(mode==='case'?'proto':'case');});
+
+  function open(id,href){
+    var c=CASES[id];if(!c)return;cur=c;lastFocus=document.activeElement;mode='case';protoEl=null;caseEl=null;
+    title.textContent=c.t;tag.textContent=c.tag||'';ext.href=href;
+    var hasProto=!c.frame&&c.p&&c.p.length;
+    toggle.hidden=!hasProto;ext.hidden=!!hasProto;protoControls(!!c.frame,c.frame);toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
+    idx.innerHTML='';btns=[];body.innerHTML='';body.classList.toggle('is-frame',!!c.frame);
+    if(c.frame){
+      note.textContent='Interactive Figma prototype. Click inside it to explore.';
+      item(1,'Interactive Prototype').setAttribute('aria-current','true');
+      body.appendChild(frame(c.frame,c.t+' prototype'));
+    }else{
+      caseEl=document.createElement('div');caseEl.className='cv-case';
+      wrap=document.createElement('div');wrap.className='cv-img loading';wrap.style.aspectRatio='1400 / '+c.h;
+      var img=new Image();img.alt=c.t+' case study';img.decoding='async';img.width=1400;img.height=c.h;
+      img.onload=img.onerror=function(){wrap.classList.remove('loading');};img.src=IMG+c.img;wrap.appendChild(img);
+      c.s.forEach(function(s){var a=document.createElement('span');a.className='anchor';a.style.top=(s[1]/c.h*100)+'%';wrap.appendChild(a);});
+      caseEl.appendChild(wrap);
+      var foot=document.createElement('div');foot.className='cv-foot';
+      foot.innerHTML='<span>Designed by Bhavesh Udhani</span><a target="_blank" rel="noopener">See this project on Behance ↗</a>';foot.lastChild.href=href;caseEl.appendChild(foot);
+      body.appendChild(caseEl);caseIndex();setActive(0);
+    }
+    cv.hidden=false;root.classList.add('cv-open');setScroll(0);
+    requestAnimationFrame(function(){cv.classList.add('show');});
+    closeBtn.focus({preventScroll:true});
+    try{history.replaceState(null,'','#case-'+id);}catch(e){}
+  }
+  function close(){
+    if(cv.hidden)return;cv.classList.remove('show');root.classList.remove('cv-open');
+    setTimeout(function(){cv.hidden=true;body.innerHTML='';protoEl=null;caseEl=null;},250);
+    try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+    if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
+  }
+  function topOf(i){return wrap.offsetTop+cur.s[i][1]/cur.h*wrap.clientHeight;}
+  function jump(i){body.scrollTo({top:Math.max(0,topOf(i)-8)});setActive(i);}
+  function setActive(i){
+    btns.forEach(function(b,k){b.setAttribute('aria-current',k===i?'true':'false');});
+    var b=btns[i];if(b&&window.matchMedia('(max-width:860px)').matches){var n=b.closest('.cv-nav');n.scrollTo({left:b.parentNode.offsetLeft-12,behavior:'smooth'});}
+  }
+  function spy(){ticking=false;if(!cur||cur.frame||mode!=='case')return;var y=body.scrollTop+body.clientHeight*0.3,a=0;
+    for(var i=0;i<cur.s.length;i++){if(topOf(i)<=y)a=i;}
+    if(body.scrollTop+body.clientHeight>=body.scrollHeight-4)a=cur.s.length-1;
+    if(!btns[a]||btns[a].getAttribute('aria-current')!=='true')setActive(a);}
+  body.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(spy);},{passive:true});
+
+  closeBtn.addEventListener('click',close);
+  cv.addEventListener('click',function(e){if(e.target===cv)close();});
+  document.addEventListener('keydown',function(e){
+    if(cv.hidden)return;
+    if(e.key==='Escape'){if(document.fullscreenElement||document.webkitFullscreenElement)return;e.preventDefault();close();}
+    if(e.key==='Tab'){var f=cv.querySelectorAll('a[href],button,iframe,[tabindex]:not([tabindex="-1"])');f=[].filter.call(f,function(x){return x.offsetParent!==null;});
+      if(!f.length)return;var first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
+  });
+
+  // project cards and gallery tiles open the viewer (Ctrl/Cmd-click still opens Behance)
+  document.querySelectorAll('a[href*="behance.net/gallery/"]').forEach(function(a){
+    var id=idOf(a.href);if(!id||a.closest('#cv'))return;
+    a.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();open(id,a.href);});
+    var card=a.closest('.proj');
+    if(card&&!card.dataset.case){card.dataset.case=id;card.addEventListener('click',function(e){if(e.target.closest('a,button'))return;open(id,a.href);});}
+  });
+  // deep link: #case-<id>
+  var m=/^#case-(\d+)$/.exec(location.hash);
+  if(m&&CASES[m[1]]){var link=document.querySelector('a[href*="/gallery/'+m[1]+'/"]');setTimeout(function(){open(m[1],link?link.href:'https://www.behance.net/gallery/'+m[1]);},50);}
+})();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
