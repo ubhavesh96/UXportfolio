@@ -172,8 +172,42 @@ section.alt{background:var(--band)}
 .contact{text-align:center}
 .contact h2{font-size:clamp(32px,5vw,52px);font-weight:800}
 .contact > p{color:var(--muted);margin:14px auto 0;max-width:52ch}
-.cgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:40px;text-align:left}
-@media (max-width:900px){.cgrid{grid-template-columns:1fr}}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:clamp(20px,3vw,32px);margin-top:44px;text-align:left;align-items:stretch}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.cgrid{display:grid;grid-template-columns:1fr;gap:16px;align-content:start}
+@media (min-width:901px){.cgrid{grid-template-rows:repeat(3,1fr);align-content:stretch}.cgrid .card{align-content:center}}
+@media (min-width:600px) and (max-width:900px){.cgrid{grid-template-columns:1fr 1fr}.cgrid .card:first-child{grid-column:1/-1}}
+/* contact form (saved by Netlify Forms) */
+.cform{padding:clamp(22px,3vw,36px)}
+.cform h3{font-size:clamp(22px,2.4vw,28px);font-weight:800;line-height:1.2;margin:0}
+.cform .lede{color:var(--muted);margin-top:8px;max-width:60ch;text-wrap:pretty}
+.cform form{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;margin-top:26px}
+.cform form[hidden]{display:none}
+@media (max-width:560px){.cform form{grid-template-columns:1fr}}
+.field{display:grid;gap:7px;min-width:0;align-content:start}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600;color:var(--ink)}
+.field input,.field textarea{width:100%;font:400 16px/1.5 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+.field textarea{min-height:140px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:color-mix(in srgb,var(--muted) 75%,transparent)}
+.field input:hover,.field textarea:hover{border-color:color-mix(in srgb,var(--ink) 35%,var(--line))}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--ink) 12%,transparent)}
+.field [aria-invalid="true"]{border-color:#D93025}
+.field .err{font-size:13px;color:#D93025;min-height:0}
+.field .err:empty{display:none}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:4px}
+.form-foot .hint{font-size:13px;color:var(--muted)}
+.form-foot .btn{border:0}
+.form-foot .btn[disabled]{opacity:.6;cursor:progress}
+.form-msg{grid-column:1/-1;font-size:14px;color:#D93025}
+.form-msg:empty{display:none}
+.sent{display:grid;justify-items:start;gap:10px;margin-top:26px;padding:22px;border-radius:12px;background:var(--band)}
+.sent .ok{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c1);color:#fff}
+.sent .ok svg{width:22px;height:22px}
+.sent b{font:700 19px var(--head)}
+.sent p{color:var(--muted)}
+.sent .note{font-size:13px}
+.sent button{margin-top:6px;font:600 14px var(--body);background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
 .cgrid .card{display:grid;gap:6px}
 .cgrid .lab{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 .cgrid .v{font:600 clamp(14px,1.35vw,17px) var(--head);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all;color:var(--ink);text-decoration:none}
@@ -436,10 +470,40 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
     <div class="wrap contact">
       <h2>Let's work together</h2>
       <p>Have a complex product or workflow that needs clarity? I'm open to product design roles and projects.</p>
-      <div class="cgrid">
-        <div class="card"><span class="lab">Email</span><span class="v" id="em">bhaveshudhani96@gmail.com</span><button class="copy" type="button" data-copy="em">Copy</button></div>
-        <div class="card"><span class="lab">Phone</span><span class="v" id="ph">+91 82908 00963</span><button class="copy" type="button" data-copy="ph">Copy</button></div>
-        <div class="card"><span class="lab">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/bhaveshudhani" target="_blank" rel="noopener">in/bhaveshudhani ↗</a></div>
+      <div class="contact-grid">
+        <div class="cgrid">
+          <div class="card"><span class="lab">Email</span><span class="v" id="em">bhaveshudhani96@gmail.com</span><button class="copy" type="button" data-copy="em">Copy</button></div>
+          <div class="card"><span class="lab">Phone</span><span class="v" id="ph">+91 82908 00963</span><button class="copy" type="button" data-copy="ph">Copy</button></div>
+          <div class="card"><span class="lab">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/bhaveshudhani" target="_blank" rel="noopener">in/bhaveshudhani ↗</a></div>
+        </div>
+        <div class="card cform" id="cform">
+          <h3>Have a complex product problem?</h3>
+          <p class="lede">Let’s turn it into a clear experience your users and team can believe in.</p>
+          <form id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="contact">
+            <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field">
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="e.g. Priya Sharma" required aria-describedby="cf-name-err">
+              <span class="err" id="cf-name-err"></span>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email address</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required aria-describedby="cf-email-err">
+              <span class="err" id="cf-email-err"></span>
+            </div>
+            <div class="field full">
+              <label for="cf-msg">What are you working on?</label>
+              <textarea id="cf-msg" name="message" placeholder="Tell me about the product, the problem and your timeline." required aria-describedby="cf-msg-err"></textarea>
+              <span class="err" id="cf-msg-err"></span>
+            </div>
+            <p class="form-msg" id="cf-status" role="alert"></p>
+            <div class="form-foot">
+              <span class="hint">I usually reply within a day or two.</span>
+              <button class="btn" type="submit" id="cf-send">Send message <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -502,6 +566,35 @@ document.querySelectorAll('.copy').forEach(function(b){
     setTimeout(function(){b.textContent='Copy';},1800);
   });
 });
+</script>
+<script>
+/* Contact form: saved by Netlify Forms on the live site; simulated when testing on localhost */
+(function(){
+  var form=document.getElementById('contact-form');if(!form)return;
+  var box=document.getElementById('cform'),status=document.getElementById('cf-status'),send=document.getElementById('cf-send');
+  var local=location.protocol==='file:'||/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  var MSG={name:'Please enter your name.',email:'Please enter a valid email address.',message:'Please tell me a little about what you’re working on.'};
+  function check(el){var bad=!el.value.trim()||(el.type==='email'&&!el.checkValidity());el.setAttribute('aria-invalid',bad?'true':'false');
+    document.getElementById(el.id+'-err').textContent=bad?MSG[el.name]:'';return !bad;}
+  var fields=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));
+  fields.forEach(function(el){el.addEventListener('blur',function(){if(el.value)check(el);});el.addEventListener('input',function(){if(el.getAttribute('aria-invalid')==='true')check(el);});});
+  function done(name,test){
+    var first=(name||'').trim().split(/\s+/)[0];
+    var html='<div class="sent" tabindex="-1"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><b></b><p>Your message is on its way. I usually reply within a day or two.</p>'+(test?'<p class="note">Test mode: you’re on localhost, so nothing was saved. On the live site this message goes to Netlify Forms.</p>':'')+'<button type="button">Send another message</button></div>';
+    form.hidden=true;box.insertAdjacentHTML('beforeend',html);var s=box.querySelector('.sent');s.querySelector('b').textContent='Thanks'+(first?', '+first:'')+'!';s.focus();
+    s.querySelector('button').addEventListener('click',function(){s.remove();form.reset();form.hidden=false;fields.forEach(function(el){el.removeAttribute('aria-invalid');});document.getElementById('cf-name').focus();});
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();status.textContent='';
+    var ok=fields.map(check).every(Boolean);if(!ok){var bad=form.querySelector('[aria-invalid="true"]');if(bad)bad.focus();return;}
+    var name=form.elements.name.value;send.disabled=true;send.firstChild.textContent='Sending… ';
+    function reset(){send.disabled=false;send.firstChild.textContent='Send message ';}
+    if(local){setTimeout(function(){reset();done(name,true);},700);return;}
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+      .then(function(r){if(!r.ok)throw new Error(r.status);reset();done(name,false);})
+      .catch(function(){reset();status.textContent='Sorry, your message couldn’t be sent. Please try again, or email me at bhaveshudhani96@gmail.com.';});
+  });
+})();
 </script>
 <script>
 /* Case study viewer: opens a project's full Behance case study with a section index */
@@ -719,7 +812,7 @@ document.querySelectorAll('.copy').forEach(function(b){
 
     // cards stagger in, in groups
     gsap.from('.more-head',{y:30,opacity:0,duration:.8,ease:ease,scrollTrigger:{trigger:'.more-head',start:'top 88%'}});
-    ScrollTrigger.batch('.about .card, .exp .card, .proj, .g, .cgrid .card',{
+    ScrollTrigger.batch('.about .card, .exp .card, .proj, .g, .cgrid .card, .cform',{
       start:'top 88%',once:true,
       onEnter:function(els){gsap.from(els,{y:50,opacity:0,duration:.8,ease:ease,stagger:.12,clearProps:'transform,opacity'});}
     });
