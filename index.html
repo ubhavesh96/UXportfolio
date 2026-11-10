@@ -278,6 +278,9 @@ html.cv-open{overflow:hidden}
 .cv-img{position:relative;max-width:1000px;margin:0 auto;border-radius:12px;overflow:hidden;background:var(--band);box-shadow:var(--shadow)}
 .cv-img img{display:block;width:100%;height:100%}
 .cv-img .anchor{position:absolute;left:0;width:1px;height:1px}
+.cv-pages{display:grid;gap:14px;max-width:1000px;margin:0 auto}
+.cv-page{border-radius:10px;overflow:hidden;background:var(--band);box-shadow:var(--shadow)}
+.cv-page img{display:block;width:100%;height:100%;object-fit:cover}
 .cv-img.loading::after{content:"Loading case study…";position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:14px;color:var(--muted)}
 .cv-frame{width:100%;height:100%;min-height:520px;border:0;border-radius:12px;background:var(--band)}
 .cv-body.is-frame{padding:clamp(8px,1.4vw,18px);display:flex}
@@ -461,7 +464,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
         <a class="g" href="https://www.behance.net/gallery/197677493/Payment-application-UI-design" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/caa0b8197677493.Y3JvcCwzOTM4LDMwODAsMTg1LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Payment App UI</span><i>→</i></span></a>
         <a class="g" href="https://www.behance.net/gallery/197610427/Whatsapp-redesign-project" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/a881d9197610427.Y3JvcCwzOTM4LDMwODAsMjA0LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>WhatsApp Redesign</span><i>→</i></span></a>
         <a class="g" href="https://www.behance.net/gallery/203793343/Recipe-sharing-landing-page-PARALLAX-EFFECT" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/2c0dd4203793343.Y3JvcCwxNDI4LDExMTcsMTgzLDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Recipe Sharing Landing Page</span><i>→</i></span></a>
-        <a class="g" href="https://www.behance.net/gallery/249200645/Car-Product-Design-Portfolio" target="_blank" rel="noopener"><span class="im"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/218864249200645.Y3JvcCwyMjAxLDE3MjIsMTE5LDA.png" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Car &amp; Product Design</span><i>→</i></span></a>
+        <a class="g" href="#case-249200645" data-case="249200645"><span class="im"><img src="car-portfolio/p27.webp" alt="" loading="lazy" width="808" height="632"></span><span class="cap"><span>Car &amp; Product Design</span><i>→</i></span></a>
       </div>
     </div>
   </section>
@@ -610,14 +613,14 @@ document.querySelectorAll('.copy').forEach(function(b){
     '199215973':{t:'EaseMyTrip Onboarding',tag:'Mobile app · Travel',img:'f137c4199215973.664de7c0c7dbc.png',h:5517,s:[['Project Overview',976],['Why Redesign',1309],['Design Process',2090],['Style Guide',2645],['Visual Design',4091],['Thank You',4995]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FW3asFzWS2W1Wet6K8x4QRg%2FBUTTONS%3Fpage-id%3D292%253A957%26node-id%3D292-958%26viewport%3D337%252C292%252C0.19%26t%3DU0VzKOWFsEhu9Cr0-1%26scaling%3Dscale-down%26starting-point-node-id%3D292%253A1032']},
     '197677493':{t:'Payment App UI',tag:'Mobile app · Fintech',img:'bbf218197677493.663445b82f125.png',h:7753,s:[['Project Overview',987],['Problem Statement',1488],['Style Guide',2002],['Iconography',3237],['Layout Grid',3903],['Visual Design',5136],['Thank You',7165]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FpyA8S92B5cLm9HKWWXfUrC%2Fgpay-final-with-presentation%3Fpage-id%3D4%253A1588%26type%3Ddesign%26node-id%3D4-1589%26viewport%3D337%252C292%252C0.28%26t%3D1IxqeX7DlKyxdK7o-1%26scaling%3Dscale-down%26mode%3Ddesign']},
     '197610427':{t:'WhatsApp Redesign',tag:'Mobile app · Redesign',img:'762732197610427.663355537e201.png',h:8464,s:[['Project Overview',1052],['Problem Statement',1566],['Design Process',1958],['User Persona',2833],['Style Guide',3444],['Layout Grid',5033],['Visual Design',6115],['Thank You',7880]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbiLxiqXy9uPTtVxr84Edou%2FUntitled%3Fpage-id%3D118%253A41%26type%3Ddesign%26node-id%3D223-62%26viewport%3D306%252C135%252C0.1%26t%3DN8ZOQ0OTNSc5N9mm-1%26scaling%3Dscale-down%26starting-point-node-id%3D275%253A194%26mode%3Ddesign']},
-    '249200645':{t:'Car & Product Design',tag:'Automotive · Product design',img:'98ca9d249200645.6a02d1a038e71.png',h:987,s:[['Car & Product Design',0]]},
+    '249200645':{t:'Car & Product Design',tag:'Transportation design · Product design · 3D',local:true,pages:{dir:'car-portfolio/p',from:1,to:62,w:1400,h:990},s:[['About Me',1],['Audi Hair Dryer',2],['Trakina Skittle Snowmobile',12],['Electric Auto Rickshaw',28],['Authority & Balanced',40],['Vehicle Sketches & Renders',49],['Thank You',62]]},
     '242981817':{t:'AI for Organization Website',tag:'Website · Interactive prototype',frame:'https://embed.figma.com/proto/AoCqQUur3GOHNTljikPuJ4/ozoo-ai?page-id=0%3A1&node-id=746-8572&viewport=-22213%2C-2829%2C0.24&scaling=scale-down&content-scaling=fixed&starting-point-node-id=746%3A8572&embed-host=share'},
     '203793343':{t:'Recipe Sharing Landing Page',tag:'Website · Parallax prototype',frame:'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FbaaEMWD599JBVlfkZUc1Yp%2FUntitled%3Fpage-id%3D620%253A2179%26node-id%3D623-7209%26viewport%3D-655%252C405%252C0.11%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D623%253A7209'}
   };
   var cv=document.getElementById('cv'),body=document.getElementById('cv-body'),idx=document.getElementById('cv-index'),
       title=document.getElementById('cv-title'),tag=document.getElementById('cv-tag'),ext=document.getElementById('cv-ext'),
       toggle=document.getElementById('cv-toggle'),fsBtn=document.getElementById('cv-fs'),figLink=document.getElementById('cv-fig'),note=document.getElementById('cv-note'),closeBtn=document.getElementById('cv-close'),root=document.documentElement;
-  var cur=null,wrap=null,btns=[],lastFocus=null,ticking=false,mode='case',caseEl=null,protoEl=null,caseScroll=0;
+  var cur=null,wrap=null,pageEls={},btns=[],lastFocus=null,ticking=false,mode='case',caseEl=null,protoEl=null,caseScroll=0;
   function idOf(href){var m=/behance\.net\/gallery\/(\d+)/.exec(href||'');return m&&CASES[m[1]]?m[1]:null;}
   function pad(n){return (n<10?'0':'')+n;}
   function setScroll(v){body.style.scrollBehavior='auto';body.scrollTop=v;body.style.scrollBehavior='';}
@@ -664,7 +667,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     var c=CASES[id];if(!c)return;cur=c;lastFocus=document.activeElement;mode='case';protoEl=null;caseEl=null;
     title.textContent=c.t;tag.textContent=c.tag||'';ext.href=href;
     var hasProto=!c.frame&&c.p&&c.p.length;
-    toggle.hidden=!hasProto;ext.hidden=!!hasProto;protoControls(!!c.frame,c.frame);toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
+    toggle.hidden=!hasProto;ext.hidden=!!hasProto||!!c.local;protoControls(!!c.frame,c.frame);toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
     idx.innerHTML='';btns=[];body.innerHTML='';body.classList.toggle('is-frame',!!c.frame);
     if(c.frame){
       note.textContent='Interactive Figma prototype. Click inside it to explore.';
@@ -672,6 +675,15 @@ document.querySelectorAll('.copy').forEach(function(b){
       body.appendChild(frame(c.frame,c.t+' prototype'));
     }else{
       caseEl=document.createElement('div');caseEl.className='cv-case';
+      if(c.pages){
+        var P=c.pages;pageEls={};wrap=document.createElement('div');wrap.className='cv-pages';
+        for(var n=P.from;n<=P.to;n++){var pg=document.createElement('div');pg.className='cv-page';pg.style.aspectRatio=P.w+' / '+P.h;
+          var im=new Image();im.alt=c.t+', page '+n;im.decoding='async';im.width=P.w;im.height=P.h;if(n>P.from+1)im.loading='lazy';
+          im.src=P.dir+(n<10?'0':'')+n+'.webp';pg.appendChild(im);wrap.appendChild(pg);pageEls[n]=pg;}
+        caseEl.appendChild(wrap);
+        var pf=document.createElement('div');pf.className='cv-foot';pf.innerHTML='<span>Designed by Bhavesh Udhani</span>';caseEl.appendChild(pf);
+        body.appendChild(caseEl);caseIndex();setActive(0);
+      }else{
       wrap=document.createElement('div');wrap.className='cv-img loading';wrap.style.aspectRatio='1400 / '+c.h;
       var img=new Image();img.alt=c.t+' case study';img.decoding='async';img.width=1400;img.height=c.h;
       img.onload=img.onerror=function(){wrap.classList.remove('loading');};img.src=IMG+c.img;wrap.appendChild(img);
@@ -680,6 +692,7 @@ document.querySelectorAll('.copy').forEach(function(b){
       var foot=document.createElement('div');foot.className='cv-foot';
       foot.innerHTML='<span>Designed by Bhavesh Udhani</span><a target="_blank" rel="noopener">See this project on Behance ↗</a>';foot.lastChild.href=href;caseEl.appendChild(foot);
       body.appendChild(caseEl);caseIndex();setActive(0);
+      }
     }
     cv.hidden=false;root.classList.add('cv-open');setScroll(0);
     requestAnimationFrame(function(){cv.classList.add('show');});
@@ -692,7 +705,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
     if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
   }
-  function topOf(i){return wrap.offsetTop+cur.s[i][1]/cur.h*wrap.clientHeight;}
+  function topOf(i){if(cur.pages){var el=pageEls[cur.s[i][1]];return el?el.offsetTop:0;}return wrap.offsetTop+cur.s[i][1]/cur.h*wrap.clientHeight;}
   function jump(i){body.scrollTo({top:Math.max(0,topOf(i)-8)});setActive(i);}
   function setActive(i){
     btns.forEach(function(b,k){b.setAttribute('aria-current',k===i?'true':'false');});
@@ -715,15 +728,15 @@ document.querySelectorAll('.copy').forEach(function(b){
   });
 
   // project cards and gallery tiles open the viewer (Ctrl/Cmd-click still opens Behance)
-  document.querySelectorAll('a[href*="behance.net/gallery/"]').forEach(function(a){
-    var id=idOf(a.href);if(!id||a.closest('#cv'))return;
-    a.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();open(id,a.href);});
+  document.querySelectorAll('a[href*="behance.net/gallery/"],a[data-case]').forEach(function(a){
+    var id=a.dataset.case&&CASES[a.dataset.case]?a.dataset.case:idOf(a.href);if(!id||a.closest('#cv'))return;
+    a.addEventListener('click',function(e){if(!a.dataset.case&&(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0))return;e.preventDefault();open(id,a.href);});
     var card=a.closest('.proj');
     if(card&&!card.dataset.case){card.dataset.case=id;card.addEventListener('click',function(e){if(e.target.closest('a,button'))return;open(id,a.href);});}
   });
   // deep link: #case-<id>
   var m=/^#case-(\d+)$/.exec(location.hash);
-  if(m&&CASES[m[1]]){var link=document.querySelector('a[href*="/gallery/'+m[1]+'/"]');setTimeout(function(){open(m[1],link?link.href:'https://www.behance.net/gallery/'+m[1]);},50);}
+  if(m&&CASES[m[1]]){var link=document.querySelector('a[href*="/gallery/'+m[1]+'/"],a[data-case="'+m[1]+'"]');setTimeout(function(){open(m[1],link?link.href:'https://www.behance.net/gallery/'+m[1]);},50);}
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
