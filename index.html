@@ -299,6 +299,7 @@ html.cv-open{overflow:hidden}
 .cv-fs{cursor:pointer;font:600 14px var(--body)}
 .cv-fs svg{width:15px;height:15px}
 .cv-frame:fullscreen{border-radius:0;background:#1e1e1e}
+.cv-panel:fullscreen{width:100%;height:100%;max-height:none;border-radius:0;border:0;transform:none}
 .cv-head .tg{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:700px){.cv-head{flex-wrap:wrap;row-gap:10px}.cv-head .t{flex:1 1 100%}.cv-head .acts{width:100%;justify-content:flex-end;gap:6px}.cv-fs span,.cv-fig span{display:none}.cv-ext{padding:8px 10px}}
 .cv-proto{flex:1;display:flex;min-height:0;min-width:0}
@@ -632,7 +633,16 @@ document.querySelectorAll('.copy').forEach(function(b){
       return {embed:e.toString(),open:open};}catch(err){return {embed:u,open:u};}}
   function protoControls(on,u){fsBtn.hidden=!on;figLink.hidden=!on;if(on)figLink.href=fig(u).open;}
   function visibleFrame(){var f=body.querySelectorAll('iframe');for(var i=0;i<f.length;i++)if(!f[i].hidden&&f[i].offsetParent)return f[i];return null;}
-  fsBtn.addEventListener('click',function(){var f=visibleFrame();if(!f)return;var r=f.requestFullscreen||f.webkitRequestFullscreen;if(r){try{var p=r.call(f);if(p&&p.catch)p.catch(function(){window.open(figLink.href,'_blank','noopener');});}catch(e){window.open(figLink.href,'_blank','noopener');}}else window.open(figLink.href,'_blank','noopener');});
+  function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement;}
+  fsBtn.addEventListener('click',function(){
+    if(fsEl()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+    var t=(cur&&cur.pages&&mode==='case')?cv.querySelector('.cv-panel'):visibleFrame();if(!t)return;
+    var fallback=function(){if(!figLink.hidden)window.open(figLink.href,'_blank','noopener');};
+    var r=t.requestFullscreen||t.webkitRequestFullscreen;if(!r){fallback();return;}
+    try{var q=r.call(t);if(q&&q.catch)q.catch(fallback);}catch(e){fallback();}
+  });
+  function fsLabel(){var on=!!fsEl();fsBtn.querySelector('span').textContent=on?'Exit full screen':'Full screen';fsBtn.title=on?'Exit full screen':'Full screen';}
+  document.addEventListener('fullscreenchange',fsLabel);document.addEventListener('webkitfullscreenchange',fsLabel);
   function frame(src,t){var f=document.createElement('iframe');f.className='cv-frame';f.src=fig(src).embed;f.title=t;f.allowFullscreen=true;f.setAttribute('allow','fullscreen; clipboard-write');return f;}
 
   function caseIndex(){
@@ -667,7 +677,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     var c=CASES[id];if(!c)return;cur=c;lastFocus=document.activeElement;mode='case';protoEl=null;caseEl=null;
     title.textContent=c.t;tag.textContent=c.tag||'';ext.href=href;
     var hasProto=!c.frame&&c.p&&c.p.length;
-    toggle.hidden=!hasProto;ext.hidden=!!hasProto||!!c.local;protoControls(!!c.frame,c.frame);toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
+    toggle.hidden=!hasProto;ext.hidden=!!hasProto||!!c.local;protoControls(!!c.frame,c.frame);if(c.pages)fsBtn.hidden=false;toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
     idx.innerHTML='';btns=[];body.innerHTML='';body.classList.toggle('is-frame',!!c.frame);
     if(c.frame){
       note.textContent='Interactive Figma prototype. Click inside it to explore.';
@@ -700,7 +710,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     try{history.replaceState(null,'','#case-'+id);}catch(e){}
   }
   function close(){
-    if(cv.hidden)return;cv.classList.remove('show');root.classList.remove('cv-open');
+    if(cv.hidden)return;if(fsEl())(document.exitFullscreen||document.webkitExitFullscreen).call(document);cv.classList.remove('show');root.classList.remove('cv-open');
     setTimeout(function(){cv.hidden=true;body.innerHTML='';protoEl=null;caseEl=null;},250);
     try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
     if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
