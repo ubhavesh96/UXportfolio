@@ -293,7 +293,7 @@ html.cv-open{overflow:hidden}
   .cv-nav ol{display:flex;gap:6px;width:max-content}
   .cv-nav button{white-space:nowrap;padding:7px 12px;border-radius:999px;border-color:var(--line);background:var(--card)}
 }
-.cv-head [hidden]{display:none!important}
+.cv-head [hidden]{display:none!important}.cv-head .cv-ext,.cv-head .cv-close{white-space:nowrap}@media (max-width:700px){.cv-head .acts{flex-wrap:wrap}}
 .cv-toggle{cursor:pointer;font:600 14px var(--body)}
 .cv-toggle svg{width:15px;height:15px}
 .cv-fs{cursor:pointer;font:600 14px var(--body)}
@@ -365,7 +365,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
           <div class="card">
             <h3>Education</h3>
             <div class="edu">
-              <div class="edu-item"><h4>BITSOM (with Masai)</h4><span class="d">AI Product Management · Capstone: Voice Matters</span><span class="y">2026</span></div>
+              <div class="edu-item"><h4>BITSOM (with Masai)</h4><span class="d">AI Product Management · Capstone: Paisa Pakka</span><span class="y">2026</span></div>
               <div class="edu-item"><h4>Mantra Academy, Bengaluru</h4><span class="d">Diploma in Transportation Design &amp; Research</span><span class="y">2017 – 2018</span></div>
               <div class="edu-item"><h4>Poornima Group of Institutions, Jaipur</h4><span class="d">B.Tech in Mechanical Engineering</span><span class="y">2013 – 2018</span></div>
             </div>
@@ -443,8 +443,8 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
           <div class="body"><span class="tag">Salesforce · SLDS · Components</span><h3>Salesforce Improved Help</h3><p>Enhancements to Improved Help, the in-app help platform for Salesforce: a richer Reading List Viewer, field-level help in Dynamic Forms, a modern Page Guide, author acknowledgement and multi-app help, designed as SLDS components.</p><div class="result"><b>5</b><span>components shipped with developers</span></div></div>
         </article>
         <article class="proj">
-          <div class="shot" aria-hidden="true"><span class="soon">Screens soon</span><div class="mock phone"><div class="dots"><i></i></div><div class="lines"><span style="width:60%;background:var(--c4)"></span><span style="height:34px;border-radius:8px"></span><span></span><span style="height:24px;border-radius:8px"></span></div></div></div>
-          <div class="body"><span class="tag">AI · Voice · Capstone</span><h3>Voice Matters</h3><p>A Hindi-first voice AI assistant that helps people find verified government welfare schemes, taken from research to a working MVP.</p><div class="result"><b>0 → MVP</b><span>discovery, roadmap and AI workflow</span></div></div>
+          <a class="shot has-img" href="https://www.behance.net/gallery/258519339/Paisa-Pakka-Money-Sorted-Mind-at-ease" target="_blank" rel="noopener" aria-label="Open Paisa Pakka case study"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/84a6de258519339.Y3JvcCwxMDY3LDgzNCw3Niw3.jpg" alt="Paisa Pakka cover" loading="lazy" width="808" height="632"><span class="soon">View case study</span></a>
+          <div class="body"><span class="tag">AI · Fintech · Voice · Capstone</span><h3>Paisa Pakka</h3><p>A voice-first money companion for people who have just started earning. It tells them what’s real, helps them keep what they earn and gets them what they’re owed, in their own language and without jargon.</p><div class="result"><b>0 → MVP</b><span>discovery, roadmap and AI workflow</span></div></div>
         </article>
         <article class="proj">
           <a class="shot has-img" href="https://www.behance.net/gallery/258149967/Parent-Engagement-Platform-Jijau" target="_blank" rel="noopener" aria-label="Open Jijau Parent Engagement Platform case study"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/825a3b258149967.Y3JvcCwzMTk5LDI1MDIsMjQ1LDA.jpg" alt="Jijau Parent Engagement Platform cover" loading="lazy" width="808" height="632"><span class="soon">View case study</span></a>
@@ -520,6 +520,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
       <div class="acts">
         <button class="cv-ext cv-fs" type="button" id="cv-fs" hidden title="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg><span>Full screen</span></button>
         <a class="cv-ext cv-fig" id="cv-fig" href="#" target="_blank" rel="noopener" hidden title="Open in Figma"><span>Open in Figma</span> ↗</a>
+        <a class="cv-ext cv-app" id="cv-app" href="#" target="_blank" rel="noopener" hidden>Try the app ↗</a>
         <button class="cv-ext cv-toggle" type="button" id="cv-toggle" hidden>View prototype</button>
         <a class="cv-ext" id="cv-ext" href="#" target="_blank" rel="noopener"><span>View on Behance</span> ↗</a>
         <button class="cv-close" type="button" id="cv-close" aria-label="Close case study"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Close</button>
@@ -608,6 +609,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     '243253797':{t:'Enterprise Audit Platform',tag:'BFSI · Enterprise · MUI',img:'d40f3d243253797.6aeb8686da0f7.jpg',h:11503,s:[['Project Overview',1035],['Problem Statement',1605],['Users & Roles',2121],['Information Architecture',3132],['Style Guide',4432],['Layout',7498],['Visual Design',8395],['Thank You',10879]],p:['https://embed.figma.com/proto/oDebLKWlnpcyu9rz8H9Add/Audit-Management?page-id=&node-id=5182-28717&viewport=2152%2C-5786%2C0.44&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=4035%3A17960&show-proto-sidebar=1&embed-host=share']},
     '258164639':{t:'Salesforce Improved Help',tag:'Salesforce · SLDS · Components',img:'9672e0258164639.6aeed5242a0c2.jpg',h:10836,s:[['Project Overview',975],['Client Brief',1536],['Problem Statement',2396],['Enhancements',2858],['Style Guide',4260],['UI Elements',5710],['Visual Design',7480],['Thank You',10212]]},
     '258149967':{t:'Jijau: Parent Engagement Platform',tag:'EdTech · Mobile app · Research',img:'618412258149967.6aee28c684411.jpg',h:12312,s:[['Project Overview',944],['Problem Statement',1568],['Listening to Schools',2055],['Who It Is For',2712],['What Schools Can Share',3220],['The App',4029],['School Profile',6006],['Design System',7004],['Components',9611],['Thank You',11960]],pl:['Prototype 1','Prototype 2'],p:['https://embed.figma.com/proto/GN5tbUQHDhT557dwy838Fc/openlinks-foundation_nov?page-id=602%3A627&node-id=602-1712&m=draw&scaling=scale-down&content-scaling=fixed&starting-point-node-id=602%3A1712&embed-host=share','https://embed.figma.com/proto/GN5tbUQHDhT557dwy838Fc/openlinks-foundation_nov?page-id=686%3A12607&node-id=1076-8052&p=f&m=draw&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1076%3A8052&show-proto-sidebar=1&embed-host=share']},
+    '258519339':{t:'Paisa Pakka',app:'https://voice-matters-web.onrender.com/',tag:'AI · Fintech · Voice · Capstone',src:'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6bb851258519339.6af98ccb2b0a2.jpg',w:584,h:16383,mw:760,s:[['Project Overview',490],['The Problem',745],['Research Insights',1205],['User Persona',1530],['User Journey',2000],['Pain Points to Features',2465],['Product Strategy',2940],['Competitive Landscape',3340],['SWOT',3960],['Go-to-Market',4415],['MVP Scope',4750],['How It Works',5205],['Design Decisions',5530],['Design System',6285],['Screens',10155],['Responsive Design',11765],['Success Metrics',13050],['Validation & Learnings',13430],['Supporting Frameworks',13905],['Market Analysis',15248],['Thank You',16175]],pl:['Prototype 1','Prototype 2'],p:['https://embed.figma.com/proto/30XjlZucBIriskks6RhxFY/paisa-pakka?page-id=1%3A2&node-id=10-211&p=f&viewport=285%2C68%2C0.05&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A203&show-proto-sidebar=1&embed-host=share','https://embed.figma.com/proto/30XjlZucBIriskks6RhxFY/paisa-pakka?node-id=16-202&p=f&viewport=285%2C68%2C0.05&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=16%3A202&page-id=0%3A1&embed-host=share']},
     '204573451':{t:'Parcel Pilot: Parcel Tracking App',tag:'Mobile app · Logistics',img:'2be383204573451.66ab3924acf8d.jpg',h:10452,s:[['Project Overview',982],['Problem Identification',1352],['Design Process',1981],['User Persona',2526],['Style Guide',3722],['Layout Grid',5756],['Low-Fidelity Design',6655],['Visual Design',8303],['Thank You',9949]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fh4ukaODj0XAXwhMPZWCtvE%2Fwhatsapp-app%3Fpage-id%3D397%253A5715%26node-id%3D979-1656%26viewport%3D310%252C-502%252C0.08%26t%3DVVt7cqv0XecwF4wC-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D979%253A1656%26show-proto-sidebar%3D1']},
     '203491121':{t:'Visitify: Visitor Management App',tag:'Mobile app · Enterprise',img:'55f80e203491121.669807ebaa4f2.jpg',h:15242,s:[['Project Overview',985],['Problem Statement',1340],['Design Process',1916],['SWOT Analysis',2466],['User Persona',3987],['Information Architecture',5397],['Style Guide',6663],['Layout Grid',7926],['UI Elements',8748],['Visual Design',9726],['Admin Screens',11410],['Visitor Screens',13006],['Thank You',14819]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fh4ukaODj0XAXwhMPZWCtvE%2Fwhatsapp-app%3Fpage-id%3D566%253A785%26node-id%3D956-1439%26viewport%3D973%252C-1740%252C0.21%26t%3DGaaLOHyWUxTYYxQ4-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D957%253A1622%26show-proto-sidebar%3D1']},
     '202352673':{t:'DAMAC Website Redesign',tag:'Website · Real estate',img:'953c3f202352673.66849e6398bbb.png',h:14055,s:[['Introduction',930],['Project Overview',2100],['Problem Statement',2680],['Landing Page',3858],['Design Process',4480],['User Persona',5650],['Style Guide',6515],['Layout Grid',7720],['Visual Design',8560],['Thank You',13480]],p:['https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FC2vOYLr7XyXPw3GN0arapY%2Fdamac-scrollable%3Fpage-id%3D798%253A1344%26node-id%3D798-2155%26viewport%3D479%252C151%252C0.05%26t%3D8ofyOkumnNgqROPU-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D798%253A2155']},
@@ -620,7 +622,7 @@ document.querySelectorAll('.copy').forEach(function(b){
   };
   var cv=document.getElementById('cv'),body=document.getElementById('cv-body'),idx=document.getElementById('cv-index'),
       title=document.getElementById('cv-title'),tag=document.getElementById('cv-tag'),ext=document.getElementById('cv-ext'),
-      toggle=document.getElementById('cv-toggle'),fsBtn=document.getElementById('cv-fs'),figLink=document.getElementById('cv-fig'),note=document.getElementById('cv-note'),closeBtn=document.getElementById('cv-close'),root=document.documentElement;
+      toggle=document.getElementById('cv-toggle'),appLink=document.getElementById('cv-app'),fsBtn=document.getElementById('cv-fs'),figLink=document.getElementById('cv-fig'),note=document.getElementById('cv-note'),closeBtn=document.getElementById('cv-close'),root=document.documentElement;
   var cur=null,wrap=null,pageEls={},btns=[],lastFocus=null,ticking=false,mode='case',caseEl=null,protoEl=null,caseScroll=0;
   function idOf(href){var m=/behance\.net\/gallery\/(\d+)/.exec(href||'');return m&&CASES[m[1]]?m[1]:null;}
   function pad(n){return (n<10?'0':'')+n;}
@@ -677,7 +679,7 @@ document.querySelectorAll('.copy').forEach(function(b){
     var c=CASES[id];if(!c)return;cur=c;lastFocus=document.activeElement;mode='case';protoEl=null;caseEl=null;
     title.textContent=c.t;tag.textContent=c.tag||'';ext.href=href;
     var hasProto=!c.frame&&c.p&&c.p.length;
-    toggle.hidden=!hasProto;ext.hidden=!!hasProto||!!c.local;protoControls(!!c.frame,c.frame);if(c.pages)fsBtn.hidden=false;toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
+    toggle.hidden=!hasProto;ext.hidden=!!hasProto||!!c.local;protoControls(!!c.frame,c.frame);if(c.pages)fsBtn.hidden=false;appLink.hidden=!c.app;if(c.app)appLink.href=c.app;toggle.innerHTML='View prototype';toggle.setAttribute('aria-pressed','false');
     idx.innerHTML='';btns=[];body.innerHTML='';body.classList.toggle('is-frame',!!c.frame);
     if(c.frame){
       note.textContent='Interactive Figma prototype. Click inside it to explore.';
@@ -694,9 +696,9 @@ document.querySelectorAll('.copy').forEach(function(b){
         var pf=document.createElement('div');pf.className='cv-foot';pf.innerHTML='<span>Designed by Bhavesh Udhani</span>';caseEl.appendChild(pf);
         body.appendChild(caseEl);caseIndex();setActive(0);
       }else{
-      wrap=document.createElement('div');wrap.className='cv-img loading';wrap.style.aspectRatio='1400 / '+c.h;
-      var img=new Image();img.alt=c.t+' case study';img.decoding='async';img.width=1400;img.height=c.h;
-      img.onload=img.onerror=function(){wrap.classList.remove('loading');};img.src=IMG+c.img;wrap.appendChild(img);
+      wrap=document.createElement('div');wrap.className='cv-img loading';wrap.style.aspectRatio=(c.w||1400)+' / '+c.h;if(c.mw)wrap.style.maxWidth=c.mw+'px';
+      var img=new Image();img.alt=c.t+' case study';img.decoding='async';img.width=c.w||1400;img.height=c.h;
+      img.onload=img.onerror=function(){wrap.classList.remove('loading');};img.src=c.src||IMG+c.img;wrap.appendChild(img);
       c.s.forEach(function(s){var a=document.createElement('span');a.className='anchor';a.style.top=(s[1]/c.h*100)+'%';wrap.appendChild(a);});
       caseEl.appendChild(wrap);
       var foot=document.createElement('div');foot.className='cv-foot';
